@@ -1,0 +1,2 @@
+jun. 23, 2022 4:09:03 P. M. helpers.LogTests printInfo
+INFO: Invalid DATA:probando si funciona con dos logs
