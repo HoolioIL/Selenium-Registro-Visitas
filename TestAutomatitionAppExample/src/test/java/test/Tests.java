@@ -39,39 +39,39 @@ public class Tests {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
-		driver.navigate().to("https://app-example-2022.herokuapp.com/auth/login");
+		driver.navigate().to("https://registrovisitas2022.herokuapp.com/auth/login");
 		Helpers helper = new Helpers();
 		helper.awaitResponse(3);
 	}
-	@Test
-	public void loginUserInvalidData() {
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("mod@user.com", "1234567");
-		Helpers helper = new Helpers();
-		helper.awaitResponse(2);
-		LogTests lt = new LogTests();
-        lt.printInfo( "Invalid DATA:" + "probando si funciona con dos logs" );
-		Assert.assertTrue(driver.findElement(By.className("card")).getText().contains("La combinación email/password no es correcta"));
-		driver.close();
-	}
-	@Test
-	public void loginValid() {
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("mario@bros.jp", "123456789");
-		DashboardPage dashboardPage = new DashboardPage(driver);
-		dashboardPage.loadDashboard();
-		driver.close();
-	}
+//	@Test
+//	public void loginUserInvalidData() {
+//		LoginPage loginPage = new LoginPage(driver);
+//		loginPage.login("mod@user.com", "1234567");
+//		Helpers helper = new Helpers();
+//		helper.awaitResponse(2);
+//		LogTests lt = new LogTests();
+//        lt.printInfo( "Invalid DATA:" + "probando si funciona con dos logs" );
+//		Assert.assertTrue(driver.findElement(By.className("card")).getText().contains("La combinación email/password no es correcta"));
+//		driver.close();
+//	}//
+//	@Test
+//	public void loginValid() {
+//		LoginPage loginPage = new LoginPage(driver);
+//		loginPage.login("mario@bros.jp", "123456789");
+//		DashboardPage dashboardPage = new DashboardPage(driver);
+//		dashboardPage.loadDashboard();
+//		driver.close();
+//	}
 	
 	
-	@Test
-	public void checkCardDashboardExists() {
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("mario@bros.jp", "123456789");
-		DashboardPage dashboardPage = new DashboardPage(driver);
-		dashboardPage.cardContents();
-		driver.close();
-	}	
+//	@Test
+//	public void checkCardDashboardExists() {
+//		LoginPage loginPage = new LoginPage(driver);
+//		loginPage.login("mario@bros.jp", "123456789");
+//		DashboardPage dashboardPage = new DashboardPage(driver);
+//		dashboardPage.cardContents();
+//		driver.close();
+//	}	
 	
 	
 	@Test

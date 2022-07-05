@@ -30,7 +30,7 @@ public class IncidentsPage {
 	public IncidentsPage( WebDriver driver) {
 		this.driver = driver;
 //		categoryDrop = RelativeLocator.with(By.tagName("select"));
-		categoryDrop = By.name("categoria");
+		categoryDrop = By.xpath("//*[@formcontrolname = 'categoria']");
 		commentsField = By.xpath("/html/body/div/app-root/div/app-main/div/div/app-incidencias/div/div[1]/div/div/form/div[1]/div[2]/textarea");
 		saveButton = By.xpath("//button[@type='submit']");
 		incidentTable = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]");
@@ -42,7 +42,7 @@ public class IncidentsPage {
 		wait.until(ExpectedConditions.presenceOfElementLocated(categoryDrop));
 		Select selectCategory = new Select( driver.findElement(categoryDrop));
 		selectCategory.selectByVisibleText(option);
-		String message = "Este es un comentario de una incidencia";
+		String message = "Este es un comentario desde selenium incidencia";
 		driver.findElement(commentsField).sendKeys( message );
 		driver.findElement(saveButton).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-modal")));
