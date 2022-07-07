@@ -14,7 +14,8 @@ import org.testng.annotations.BeforeMethod;
 import helpers.Helpers;
 import helpers.ScreenShooter;
 
-public class CommonTests {
+public class CommonTest {
+	
 	protected WebDriver driver;
 //	protected ArrayList<String> tabs;
 	protected String baseUrl = "https://registrovisitas2022.herokuapp.com";

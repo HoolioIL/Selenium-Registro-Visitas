@@ -13,7 +13,7 @@ import helpers.Helpers;
 import helpers.LogTests;
 import helpers.WebDriverManager;
 
-public class LoginTests extends CommonTests{
+public class LoginTest extends CommonTest{
 	
 	@Test(description="Ingreso de datos no válidos en formulario de login")
 	public void loginUserInvalidData() {

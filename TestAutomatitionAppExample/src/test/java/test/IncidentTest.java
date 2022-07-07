@@ -7,7 +7,7 @@ import Pages.IncidentsPage;
 import Pages.LoginPage;
 import helpers.WebDriverManager;
 
-public class IncidentTests extends CommonTests {
+public class IncidentTest extends CommonTest {
 	
 	@Test(description="Registrar Incidente", enabled=true)
 	public void registerIncident() {
