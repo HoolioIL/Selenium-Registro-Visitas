@@ -11,6 +11,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,9 +25,12 @@ public class IncidentsPage {
 	
 	private WebDriver driver;
 	
+	@FindBy(how=How.XPATH, using="//button[@type='submit']")
+	private WebElement saveButtonElement;
+	
 	private By categoryDrop;
 	private By commentsField;
-	private By saveButton;
+	//private By saveButton;
 	private By incidentTable;
 	
 	public IncidentsPage( WebDriver driver) {
@@ -32,8 +38,10 @@ public class IncidentsPage {
 //		categoryDrop = RelativeLocator.with(By.tagName("select"));
 		categoryDrop = By.xpath("//*[@formcontrolname = 'categoria']");
 		commentsField = By.xpath("/html/body/div/app-root/div/app-main/div/div/app-incidencias/div/div[1]/div/div/form/div[1]/div[2]/textarea");
-		saveButton = By.xpath("//button[@type='submit']");
+		//saveButton = By.xpath("//button[@type='submit']");
 		incidentTable = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]");
+		
+		PageFactory.initElements( driver, this );
 	}
 	
 	
@@ -44,14 +52,14 @@ public class IncidentsPage {
 		selectCategory.selectByVisibleText(option);
 		String message = "Este es un comentario desde selenium incidencia";
 		driver.findElement(commentsField).sendKeys( message );
-		driver.findElement(saveButton).click();
+		
+		//USING PAGE OBJECT
+//		driver.findElement(saveButton).click();
+		
+		//USING PAGE FACTORY
+		saveButtonElement.click();
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-modal")));
-//		File screenshot = ( (TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//		try {
-//			FileUtils.copyFile(screenshot, new File("src/test/java/screenshots/Register Incident"+ System.currentTimeMillis() + ".png"));
-//		}catch ( IOException e) {
-//			e.printStackTrace();
-//		}
 		driver.findElement(incidentTable).getText().contains( message );
 	}
 
