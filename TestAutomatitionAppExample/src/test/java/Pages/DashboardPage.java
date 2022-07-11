@@ -16,6 +16,7 @@ public class DashboardPage {
 	private By cardIncidents;
 	private By cardVisits;
 	private By incidentsButton;
+	private By visitsButton;
 	private String url;
 		
 	public DashboardPage( WebDriver driver, String url) {
@@ -25,6 +26,7 @@ public class DashboardPage {
 		cardIncidents = By.xpath("/html/body/div/app-root/div/app-main/div/div/app-dashboard/section[1]/div/div/div[3]/div");
 		cardVisits 	  = By.xpath("/html/body/div/app-root/div/app-main/div/div/app-dashboard/section[1]/div/div/div[4]/div");
 		incidentsButton = By.xpath("/html/body/div/app-root/div/app-main/div/div/app-dashboard/section[1]/div/div/div[3]/div/a");
+		visitsButton =  By.xpath("//a[contains(string(), 'Más Información') and @href[contains(string(),'visitas')]]");
 		this.url = url + "/dashboard";
 		
 	}
@@ -54,6 +56,11 @@ public class DashboardPage {
 	public void navigateToIncidents() {
 		driver.findElement(incidentsButton).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		
+	}
+	
+	
+	public void navigateToVisits() {
+		driver.findElement(visitsButton).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 }

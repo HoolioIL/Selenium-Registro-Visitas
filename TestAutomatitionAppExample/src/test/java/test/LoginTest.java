@@ -13,9 +13,10 @@ import helpers.Helpers;
 import helpers.LogTests;
 import helpers.WebDriverManager;
 
+@Test( groups = {"LoginGroup"})
 public class LoginTest extends CommonTest{
 	
-	@Test(description="Ingreso de datos no válidos en formulario de login")
+	@Test(description="Ingreso de datos no válidos en formulario de login", groups = {"LoginGroup"})
 	public void loginUserInvalidData() {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
 		String openGoogle = "window.open('')";
@@ -29,13 +30,13 @@ public class LoginTest extends CommonTest{
 		loginPage.login("mod@user.com", "1234567");
 		Helpers helper = new Helpers();
 		helper.awaitResponse(2);
-		LogTests lt = new LogTests();
-        lt.printInfo( "Invalid DATA:" + "probando si funciona con dos logs" );
+//		LogTests lt = new LogTests();
+//        lt.printInfo( "Invalid DATA:" + "probando si funciona con dos logs" );
 		Assert.assertTrue(driver.findElement(By.className("card")).getText().contains("La combinación email/password no es correcta"));
 		driver.quit();
 	}
 
-	@Test(description="Login con credenciales válidas")
+	@Test(description="Login con credenciales válidas" , groups = {"LoginGroup"})
 	public void loginValid() {
 		//WebDriverManager.setWindowsSize(driver, "fullscreen");
 		LoginPage loginPage = new LoginPage(driver);

@@ -19,4 +19,5 @@ public class WebDriverManager {
 	public static void setWindowsSize( WebDriver driver, int x, int y ) {
 		driver.manage().window().setSize(new Dimension( x, y));
 	}
+	
 }

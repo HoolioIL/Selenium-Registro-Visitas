@@ -5,9 +5,11 @@ import org.testng.annotations.Test;
 import Pages.DashboardPage;
 import Pages.LoginPage;
 
+@Test(groups = {"DashboardGroup"})
 public class DashboardTest extends CommonTest{
 	
-	@Test(description="Cards dashboard (vista inicio) cargan correctamente", enabled=true)
+	
+	@Test(description="Cards dashboard (vista inicio) cargan correctamente")//groups = { "DashboardGroup" }
 	public void checkCardDashboardExists() {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.login("mario@bros.jp", "123456789");
@@ -15,5 +17,5 @@ public class DashboardTest extends CommonTest{
 		dashboardPage.cardContents();
 		driver.close();
 	}	
-
+	
 }

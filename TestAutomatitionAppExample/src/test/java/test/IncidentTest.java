@@ -9,7 +9,7 @@ import helpers.WebDriverManager;
 
 public class IncidentTest extends CommonTest {
 	
-	@Test(description="Registrar Incidente", enabled=true)
+	@Test(description="Registrar Incidente", groups = { "IncidentGroup" })
 	public void registerIncident() {
 		WebDriverManager.setWindowsSize(driver, 600, 800);
 		LoginPage loginPage = new LoginPage(driver);
