@@ -9,7 +9,7 @@ import helpers.Helpers;
 
 public class VisitTest extends CommonTest{
 	
-	@Test(description = "Registrar visita exitosamente")
+	@Test(description = "Registrar visita exitosamente", enabled = false)
 	public void registerVisit() {
 		LoginPage lp = new LoginPage(driver);
 		lp.login("mario@bros.jp", "123456789"); //falta optimizar
@@ -24,5 +24,14 @@ public class VisitTest extends CommonTest{
 		Assert.assertEquals(sizeRegister, 1);
 	}
 	
+	@Test(description = "Chequear si la paginación está funcionando correctamente")
+	public void paginationWorks() {
+		LoginPage lp = new LoginPage(driver);
+		lp.login("mario@bros.jp", "123456789"); //falta optimizar
+		DashboardPage dp = new DashboardPage(driver, baseUrl);
+		dp.navigateToVisits();
+		VisitPage visitPage = new VisitPage( driver );
+		Assert.assertTrue(visitPage.checkPagination());
+	}
 
 }
